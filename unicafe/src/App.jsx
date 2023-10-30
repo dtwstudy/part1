@@ -3,7 +3,7 @@ import { useState } from 'react'
 const StatisticLine = (props) => {
 return (
     <div>
-    <p>{props.text} {props.value}</p>
+    <p >{props.text} {props.value}</p>
     </div>
   )
 
@@ -16,11 +16,13 @@ const Statistics = (props) => {
   }
 
   const averageScore = () => {
-    return props.average / totalScore() 
+    const num = props.average / totalScore()
+    return num.toFixed(1)
   }
 
   const positiveScore = () =>{
-    return props.good  / totalScore() * 100
+    const num = props.good  / totalScore() * 100
+    return num.toFixed(1) + " %"
   }
 
   
@@ -32,13 +34,38 @@ if (props.good > 0 || props.bad > 0 || props.neutral > 0){
   return (
     <div>
     <h4>statistics</h4>
-   <StatisticLine text="good" value={props.good}/>
-   <StatisticLine text="neutral" value={props.neutral}/>
-   <StatisticLine text="bad" value={props.bad}/>
-   <p>all {totalScore()}</p>
-   <p>average { averageScore()}</p>
-   <p>positive { positiveScore()  } % </p>
-    </div>
+    <table>
+      <tbody>
+      <tr>
+        <td> <StatisticLine text="good" value={props.good}/></td>
+      </tr>
+      <tr>
+        <td> <StatisticLine text="neutral" value={props.neutral}/></td>
+      </tr>
+      <tr>
+        <td>
+        <StatisticLine text="bad" value={props.bad}/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        <StatisticLine text="all" value={totalScore()}/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        <StatisticLine text="average" value={averageScore()}/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        <StatisticLine text="positive" value={positiveScore() }/>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+   </div>
   )
 }
  
