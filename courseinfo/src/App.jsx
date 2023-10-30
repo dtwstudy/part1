@@ -8,6 +8,14 @@ const Header = (props) => {
   
 }
 
+const Part = (props) => {
+  return(
+    <div>
+       
+      </div>
+  )
+  }
+
 const Content = () => {
 return(
   <div>
@@ -26,6 +34,7 @@ const Total = () => {
 }
 
 const App = () => {
+
   const course = { 
     name: "Half Stack application development" , 
 
@@ -41,13 +50,14 @@ const App = () => {
     name: 'State of a component',
     exercises: 14
   }]
+
 }
 
   return (
     <div>
       <Header course={course} />
-      <Content  parts={parts} />
-      <Total parts={parts} />
+      <Content   />
+      <Total />
     </div>
   )
 }
